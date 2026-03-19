@@ -1,0 +1,43 @@
+---
+const { services } = Astro.props;
+---
+
+<section class="section" id="services">
+  <div class="container">
+    <h2 class="section-title">Послуги</h2>
+    <p class="section-subtitle" style="margin-bottom: 2rem;">
+      Індивідуальні консультації, наставництво та навчання.
+    </p>
+
+    <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+      {services.map((service: any) => (
+        <article class="card" style="padding: 1.5rem;">
+          <div style="display: flex; justify-content: space-between; gap: 1rem; align-items: start;">
+            <h3 style="margin: 0 0 0.75rem;">{service.title}</h3>
+            <strong style="white-space: nowrap; color: var(--accent);">{service.price}</strong>
+          </div>
+
+          {(service.duration || service.format) && (
+            <p class="muted" style="margin-top: 0;">
+              {[service.duration, service.format].filter(Boolean).join(" • ")}
+            </p>
+          )}
+
+          {service.specialPrice && (
+            <p style="font-weight: 600; margin-top: 0.5rem;">
+              {service.specialPrice}
+            </p>
+          )}
+
+          <ul class="clean" style="margin: 1rem 0;">
+            {service.items.map((item: string) => <li>{item}</li>)}
+          </ul>
+
+          <p class="muted" style="margin-bottom: 0;">
+            {service.result}
+          </p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

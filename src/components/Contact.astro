@@ -1,0 +1,23 @@
+---
+const { contacts } = Astro.props;
+---
+
+<section class="section" id="contact">
+  <div class="container">
+    <div class="card" style="padding: 2rem; text-align: center;">
+      <h2 class="section-title" style="margin-bottom: 0.75rem;">Контакти</h2>
+      <p class="section-subtitle" style="margin: 0 auto 1.5rem;">
+        Для запису на консультацію або навчання напишіть у зручну соцмережу.
+      </p>
+
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a class="button button-primary" href={contacts.instagram} target="_blank" rel="noreferrer">
+          Instagram
+        </a>
+        <a class="button" href={contacts.twitter} target="_blank" rel="noreferrer">
+          X / Twitter
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

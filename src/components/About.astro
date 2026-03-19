@@ -1,0 +1,40 @@
+---
+const { about, payment, reviews } = Astro.props;
+
+const lines = about
+  .split("\n")
+  .map((line: string) => line.trim())
+  .filter(Boolean);
+
+const intro = lines.filter((line: string) => !line.startsWith("-"));
+const bulletLines = lines
+  .filter((line: string) => line.startsWith("-"))
+  .map((line: string) => line.replace(/^- /, ""));
+---
+
+<section class="section" id="about">
+  <div class="container grid grid-2">
+    <div>
+      <h2 class="section-title">Про мене</h2>
+      {intro.map((paragraph: string) => (
+        <p class="section-subtitle">{paragraph}</p>
+      ))}
+
+      <ul class="clean">
+        {bulletLines.map((item: string) => <li>{item}</li>)}
+      </ul>
+    </div>
+
+    <div class="grid">
+      <div class="card" style="padding: 1.5rem;">
+        <h3 style="margin-top: 0;">Оплата</h3>
+        <p class="muted" style="line-height: 1.7;">{payment}</p>
+      </div>
+
+      <div class="card" style="padding: 1.5rem;">
+        <h3 style="margin-top: 0;">Відгуки</h3>
+        <p class="muted" style="line-height: 1.7;">{reviews}</p>
+      </div>
+    </div>
+  </div>
+</section>
